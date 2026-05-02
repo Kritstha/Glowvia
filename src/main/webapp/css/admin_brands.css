@@ -1,0 +1,273 @@
+
+.brand-dashboard {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 28px;
+    align-items: start;
+}   
+
+.add-card {
+    background: white;
+    border-radius: 28px;
+    border: 1px solid #EEE7DE;
+    padding: 28px 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    position: sticky;
+    top: 24px;
+}
+
+.card-badge {
+    display: inline-block;
+    background: #F1EDE8;
+    border-radius: 40px;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #5D5448;
+    margin-bottom: 16px;
+}
+
+.add-card h3 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #2D2A24;
+}
+
+.add-card p {
+    font-size: 0.8rem;
+    color: #8A8176;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #8A8176;
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+.form-group input{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1.5px solid #EFEBE4;
+    font-size: 0.9rem;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-group input:focus{
+    border-bottom-color: #CBB99A;
+}
+
+.btn-submit {
+    background: #2D2A24;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 40px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+    font-size: 0.85rem;
+}
+
+.btn-submit:hover {
+    background: #4A443C;
+}
+
+.brands-list-card {
+    background: white;
+    border-radius: 28px;
+    border: 1px solid #EEE7DE;
+    overflow: hidden;
+}
+
+.list-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #EFEBE4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.list-header h3 {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.brand-count {
+    background: #F1EDE8;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.brands-table {
+    width: 100%;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1.8fr 2fr 0.6fr;
+    gap: 16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #EFEBE4;
+    align-items: center;
+    transition: background 0.15s;
+}
+
+.table-row.header-row {
+    background: #FBF9F6;
+    color: #8A8176;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #E6DFD6;
+}
+
+.brand-name-cell {
+    font-weight: 600;
+    color: #2D2A24;
+    font-size: 0.95rem;
+}
+
+.contact-cell {
+    font-size: 0.85rem;
+    color: #5D5448;
+    word-break: break-word;
+}
+
+.action-cell {
+    text-align: right;
+}
+
+.edit-btn {
+    background: none;
+    border: 1px solid #E6DFD6;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #5D5448;
+}
+
+.edit-btn:hover {
+    background: #2D2A24;
+    color: white;
+    border-color: #2D2A24;
+}
+
+.delete-brand-btn {
+    background: none;
+    border: 1px solid #E6DFD6;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #D9776A;
+    margin-left: 8px;
+}
+
+.delete-brand-btn:hover {
+    background: #D9776A;
+    color: white;
+    border-color: #D9776A;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 56px 24px;
+    color: #BAAAA0;
+    font-size: 0.85rem;
+}
+
+/* Modal for editing */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-container {
+    background: white;
+    width: 90%;
+    max-width: 440px;
+    border-radius: 32px;
+    padding: 28px 28px 32px;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+}
+
+.modal-container h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: flex-end;
+}
+
+.modal-actions button {
+    padding: 8px 20px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.modal-save {
+    background: #2D2A24;
+    color: white;
+}
+
+.modal-cancel {
+    background: #F1EDE8;
+    color: #2D2A24;
+}
+
+.action-cell {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
