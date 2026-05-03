@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #FAF9F7;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.card {
+    max-width: 420px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 28px;
+    border: 1px solid #EEEAE2;
+    padding: 40px;
+}
+
+.brand {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: #2D2A24;
+}
+
+.brand p {
+    font-size: 0.85rem;
+    color: #8A8176;
+    margin-top: 6px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #8A8176;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1.5px solid #EFEBE4;
+    font-size: 0.95rem;
+    background: transparent;
+    outline: none;
+    color: #2D2A24;
+}
+
+.form-group input:focus {
+    border-bottom-color: #CBB99A;
+}
+
+.btn-primary {
+    width: 100%;
+    background: #1A1A1A;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 44px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.btn-primary:hover {
+    background: #2C2C2C;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: #8A8176;
+}
+
+.register-link a {
+    color: #CBB99A;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.demo-note {
+    background: #F9F7F4;
+    padding: 12px;
+    border-radius: 16px;
+    margin-top: 24px;
+    font-size: 0.7rem;
+    color: #8A8176;
+    text-align: center;
+    border: 1px solid #EFEBE4;
+}
+
+.error-message {
+    background: #FFE6E6;
+    color: #B30000;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+}

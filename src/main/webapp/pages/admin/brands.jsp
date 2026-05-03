@@ -42,7 +42,7 @@
         </div>
         <div class="brands-table">
             <% if (brands == null || brands.isEmpty()) { %>
-                <div class="empty-state">✨ No brands yet. Use the left form to add your first brand.</div>
+                <div class="empty-state">No brands yet. Use the left form to add your first brand.</div>
             <% } else { %>
                 <div class="table-row header-row">
                     <div>Brand name</div>
@@ -156,7 +156,8 @@
             });
         }
     });
-	
+	//<% %> -  dobot use.  
+	//use expression langgae - ${}
     // i did this to make the url pretty and remove the query parameters
     (function handleUrlMessages() {
         const urlParams = new URLSearchParams(window.location.search);

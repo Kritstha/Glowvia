@@ -11,7 +11,9 @@ public class ProductDAO {
     
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT p.id, p.name, p.brand_id, p.product_type, p.photo_path, b.name as brand_name " +
+        String sql = "SELECT p.id, p.name, p.brand_id, p.category, p.skin_type, " +
+                     "p.key_ingredients, p.price, p.stock_quantity, p.description, p.photo_path, " +
+                     "b.name as brand_name " +
                      "FROM products p " +
                      "LEFT JOIN brands b ON p.brand_id = b.id " +
                      "ORDER BY p.name ASC";
@@ -26,7 +28,12 @@ public class ProductDAO {
                 product.setName(rs.getString("name"));
                 product.setBrandId(rs.getInt("brand_id"));
                 product.setBrandName(rs.getString("brand_name"));
-                product.setProductType(rs.getString("product_type"));
+                product.setCategory(rs.getString("category"));
+                product.setSkinType(rs.getString("skin_type"));
+                product.setKeyIngredients(rs.getString("key_ingredients"));
+                product.setPrice(rs.getDouble("price"));
+                product.setStockQuantity(rs.getInt("stock_quantity"));
+                product.setDescription(rs.getString("description"));
                 product.setPhotoPath(rs.getString("photo_path"));
                 products.add(product);
             }
@@ -38,7 +45,9 @@ public class ProductDAO {
     }
     
     public Product getProductById(int id) {
-        String sql = "SELECT p.id, p.name, p.brand_id, p.product_type, p.photo_path, b.name as brand_name " +
+        String sql = "SELECT p.id, p.name, p.brand_id, p.category, p.skin_type, " +
+                     "p.key_ingredients, p.price, p.stock_quantity, p.description, p.photo_path, " +
+                     "b.name as brand_name " +
                      "FROM products p " +
                      "LEFT JOIN brands b ON p.brand_id = b.id " +
                      "WHERE p.id = ?";
@@ -55,7 +64,12 @@ public class ProductDAO {
                 product.setName(rs.getString("name"));
                 product.setBrandId(rs.getInt("brand_id"));
                 product.setBrandName(rs.getString("brand_name"));
-                product.setProductType(rs.getString("product_type"));
+                product.setCategory(rs.getString("category"));
+                product.setSkinType(rs.getString("skin_type"));
+                product.setKeyIngredients(rs.getString("key_ingredients"));
+                product.setPrice(rs.getDouble("price"));
+                product.setStockQuantity(rs.getInt("stock_quantity"));
+                product.setDescription(rs.getString("description"));
                 product.setPhotoPath(rs.getString("photo_path"));
                 return product;
             }
@@ -108,15 +122,22 @@ public class ProductDAO {
     }
     
     public boolean addProduct(Product product) {
-        String sql = "INSERT INTO products (name, brand_id, product_type, photo_path) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO products (name, brand_id, category, skin_type, key_ingredients, " +
+                     "price, stock_quantity, description, photo_path) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getBrandId());
-            stmt.setString(3, product.getProductType());
-            stmt.setString(4, product.getPhotoPath());
+            stmt.setString(3, product.getCategory());
+            stmt.setString(4, product.getSkinType());
+            stmt.setString(5, product.getKeyIngredients());
+            stmt.setDouble(6, product.getPrice());
+            stmt.setInt(7, product.getStockQuantity());
+            stmt.setString(8, product.getDescription());
+            stmt.setString(9, product.getPhotoPath());
             
             return stmt.executeUpdate() > 0;
             
@@ -127,16 +148,23 @@ public class ProductDAO {
     }
     
     public boolean updateProduct(Product product) {
-        String sql = "UPDATE products SET name = ?, brand_id = ?, product_type = ?, photo_path = ? WHERE id = ?";
+        String sql = "UPDATE products SET name = ?, brand_id = ?, category = ?, skin_type = ?, " +
+                     "key_ingredients = ?, price = ?, stock_quantity = ?, description = ?, photo_path = ? " +
+                     "WHERE id = ?";
         
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setString(1, product.getName());
             stmt.setInt(2, product.getBrandId());
-            stmt.setString(3, product.getProductType());
-            stmt.setString(4, product.getPhotoPath());
-            stmt.setInt(5, product.getId());
+            stmt.setString(3, product.getCategory());
+            stmt.setString(4, product.getSkinType());
+            stmt.setString(5, product.getKeyIngredients());
+            stmt.setDouble(6, product.getPrice());
+            stmt.setInt(7, product.getStockQuantity());
+            stmt.setString(8, product.getDescription());
+            stmt.setString(9, product.getPhotoPath());
+            stmt.setInt(10, product.getId());
             
             return stmt.executeUpdate() > 0;
             

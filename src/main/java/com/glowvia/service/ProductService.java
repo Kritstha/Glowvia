@@ -18,6 +18,7 @@ public class ProductService {
     }
     
     public boolean addProduct(Product product) {
+        // Validation
         if (product.getName() == null || product.getName().trim().isEmpty()) {
             return false;
         }
@@ -25,11 +26,19 @@ public class ProductService {
         if (product.getBrandId() <= 0) {
             return false;
         }
-
-        if (product.getProductType() == null || product.getProductType().trim().isEmpty()) {
+        
+        if (product.getCategory() == null || product.getCategory().trim().isEmpty()) {
             return false;
         }
-
+        
+        if (product.getPrice() < 0) {
+            return false;
+        }
+        
+        if (product.getStockQuantity() < 0) {
+            return false;
+        }
+        
         if (dao.productExists(product.getName().trim(), product.getBrandId())) {
             return false;
         }
@@ -47,7 +56,15 @@ public class ProductService {
             return false;
         }
         
-        if (product.getProductType() == null || product.getProductType().trim().isEmpty()) {
+        if (product.getCategory() == null || product.getCategory().trim().isEmpty()) {
+            return false;
+        }
+        
+        if (product.getPrice() < 0) {
+            return false;
+        }
+        
+        if (product.getStockQuantity() < 0) {
             return false;
         }
         

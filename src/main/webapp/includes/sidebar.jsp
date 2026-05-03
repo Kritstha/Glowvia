@@ -51,22 +51,14 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Get the current URL path
+	  
     const currentPath = window.location.pathname;
     
-    // Extract the page name from the URL (last part after /)
-    let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-    
-    // Handle root/admin path (default to dashboard)
-    if (currentPage === "" || currentPage === "admin") {
-        currentPage = "dashboard";
-    }
-    
-    // Match using data-nav attribute
     document.querySelectorAll(".nav-item").forEach(item => {
         const navValue = item.getAttribute("data-nav");
         
-        if (navValue === currentPage) {
+        // Check if the URL contains this nav value
+        if (navValue && currentPath.includes(navValue)) {
             item.classList.add("active");
         }
     });

@@ -1,133 +1,3 @@
-
-
-.product-dashboard {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 28px;
-    align-items: start;
-}
-
-
-.add-card {
-    background: white;
-    border-radius: 28px;
-    border: 1px solid #EEE7DE;
-    padding: 28px 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    position: sticky;
-    top: 24px;
-}
-
-.card-badge {
-    display: inline-block;
-    background: #F1EDE8;
-    border-radius: 40px;
-    padding: 4px 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #5D5448;
-    margin-bottom: 16px;
-}
-
-.add-card h3 {
-    font-size: 1.35rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #2D2A24;
-}
-
-.add-card p {
-    font-size: 0.8rem;
-    color: #8A8176;
-    margin-bottom: 24px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #8A8176;
-    display: block;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 10px 0;
-    border: none;
-    border-bottom: 1.5px solid #EFEBE4;
-    font-size: 0.9rem;
-    background: transparent;
-    outline: none;
-    font-family: inherit;
-    cursor: pointer;
-}
-
-.form-group select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238A8176' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0 center;
-    padding-right: 20px;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-bottom-color: #CBB99A;
-}
-
-.form-group input[type="file"] {
-    padding: 8px 0;
-    border: none;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.field-note {
-    font-size: 0.7rem;
-    color: #8A8176;
-    margin-top: 6px;
-}
-
-.image-preview {
-    margin-top: 12px;
-    text-align: center;
-    padding: 12px;
-    background: #FBF9F6;
-    border-radius: 16px;
-}
-
-.image-preview img {
-    max-width: 100%;
-    max-height: 150px;
-    border-radius: 12px;
-}
-
-.btn-submit {
-    background: #2D2A24;
-    color: white;
-    width: 100%;
-    padding: 12px;
-    border-radius: 40px;
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: background 0.2s;
-    font-size: 0.85rem;
-}
-
-.btn-submit:hover {
-    background: #4A443C;
-}
-
-
 .products-list-card {
     background: white;
     border-radius: 28px;
@@ -151,6 +21,7 @@
     font-weight: 500;
     font-size: 1.2rem;
     color: #2D2A24;
+    margin: 0;
 }
 
 .product-count {
@@ -171,7 +42,6 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
-    min-width: 700px;
 }
 
 .products-table th {
@@ -191,13 +61,11 @@
     border-bottom: 1px solid #F0EDE8;
     vertical-align: middle;
     background: white;
-    transition: background 0.15s ease;
 }
 
 .products-table tr:hover td {
     background: #FEFCF8;
 }
-
 
 .product-thumb {
     width: 52px;
@@ -211,7 +79,6 @@
     border-radius: 12px;
     background: #FBF9F6;
     border: 1px solid #EFEBE4;
-    display: block;
 }
 
 .no-thumb {
@@ -227,13 +94,11 @@
     border: 1px solid #EFEBE4;
 }
 
-
 .product-name-cell {
     font-weight: 600;
     color: #2D2A24;
     font-size: 0.9rem;
 }
-
 
 .brand-text {
     color: #5D5448;
@@ -255,28 +120,28 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    justify-content: flex-start;
 }
-.edit-btn-table {
+
+.edit-link {
+    display: inline-block;
     background: none;
     border: 1px solid #E6DFD6;
     padding: 6px 14px;
     border-radius: 30px;
     font-size: 0.7rem;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
+    text-decoration: none;
     color: #5D5448;
-    font-family: inherit;
+    transition: all 0.2s;
 }
 
-.edit-btn-table:hover {
+.edit-link:hover {
     background: #2D2A24;
     color: white;
     border-color: #2D2A24;
 }
 
-.delete-product-btn {
+.delete-btn {
     background: none;
     border: 1px solid #E6DFD6;
     padding: 6px 14px;
@@ -284,12 +149,11 @@
     font-size: 0.7rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
     color: #D9776A;
     font-family: inherit;
 }
 
-.delete-product-btn:hover {
+.delete-btn:hover {
     background: #D9776A;
     color: white;
     border-color: #D9776A;
@@ -303,100 +167,276 @@
     background: white;
 }
 
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.2s ease;
-}
-
-.modal-overlay.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal-container {
-    background: white;
-    width: 90%;
-    max-width: 480px;
-    border-radius: 32px;
-    padding: 28px 28px 32px;
-    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-}
-
-.modal-container h4 {
-    font-size: 1.3rem;
+.stock-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.65rem;
     font-weight: 500;
-    margin-bottom: 20px;
-    color: #2D2A24;
 }
 
-.modal-container .form-group input,
-.modal-container .form-group select {
+.stock-badge.low {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.stock-badge.out {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.low-stock {
+    color: #D97706;
+    font-weight: 500;
+}
+
+.product-form-card {
+    background: white;
+    border-radius: 28px;
+    border: 1px solid #EEE7DE;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.form-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid #EFEBE4;
     background: white;
 }
 
-#currentPhotoPreview {
-    margin-top: 8px;
-    padding: 8px;
-    background: #FBF9F6;
-    border-radius: 12px;
-    text-align: center;
+.form-header h3 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #2D2A24;
+    margin: 0 0 6px 0;
 }
 
-#currentPhotoPreview img {
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 8px;
-}
-
-#currentPhotoPreview p {
-    font-size: 0.75rem;
-    color: #8A8176;
+.form-header p {
+    color: #8B7F72;
+    font-size: 0.85rem;
     margin: 0;
 }
 
-.modal-actions {
+.form-container {
+    padding: 32px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.form-field {
     display: flex;
-    gap: 12px;
-    margin-top: 24px;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.modal-actions button {
-    padding: 8px 20px;
-    border-radius: 40px;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.85rem;
+.form-field.full-width {
+    grid-column: span 2;
 }
 
-.modal-save {
-    background: #2D2A24;
-    color: white;
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2D2A24;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.modal-save:hover {
-    background: #4A443C;
+.form-label span {
+    color: #DC2626;
+    margin-left: 4px;
 }
 
-.modal-cancel {
-    background: #F1EDE8;
+.form-input,
+.form-select,
+.form-textarea {
+    padding: 12px 16px;
+    border: 1.5px solid #EFEBE4;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: white;
     color: #2D2A24;
 }
 
-.modal-cancel:hover {
-    background: #E6DFD6;
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #2D2A24;
+    box-shadow: 0 0 0 3px rgba(45, 42, 36, 0.05);
 }
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #EFEBE4;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    border-color: #2D2A24;
+}
+
+.file-name {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #8B7F72;
+}
+
+.form-actions {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #EFEBE4;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.btn-primary {
+    background: #2D2A24;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-primary:hover {
+    background: #1a1814;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: white;
+    color: #5D5448;
+    border: 1px solid #E6DFD6;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+}
+
+.btn-secondary:hover {
+    background: #FBF9F6;
+    border-color: #2D2A24;
+}
+
+.input-help {
+    font-size: 0.7rem;
+    color: #BAAAA0;
+    margin-top: 4px;
+}
+
+.price-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-symbol {
+    position: absolute;
+    left: 16px;
+    color: #8B7F72;
+    font-weight: 500;
+}
+
+.price-input-group .form-input {
+    padding-left: 32px;
+}
+
+.current-photo {
+    margin-top: 12px;
+    padding: 12px;
+    background: #FBF9F6;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.current-photo img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #EFEBE4;
+}
+
+.current-photo-info {
+    flex: 1;
+}
+
+.current-photo-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8B7F72;
+    margin-bottom: 4px;
+}
+
+.current-photo-name {
+    font-size: 0.85rem;
+    color: #2D2A24;
+}
+
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #EFEBE4;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+}
+
+.file-input:hover {
+    border-color: #2D2A24;
+}
+
+.file-name {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #8B7F72;
+}
+
+.delete-btn {
+    text-decoration: none;
+}
+
+
