@@ -94,6 +94,8 @@ public class AdminProductEditController extends HttpServlet {
         
         if (success) {
             response.sendRedirect(request.getContextPath() + "/admin/products");
+            HttpSession session = request.getSession();
+            session.setAttribute("message", "Product Edited Successfully");
         } else {
             response.sendRedirect(request.getContextPath() + "/admin/products/edit?id=" + id + "&error=Failed to update product");
         }

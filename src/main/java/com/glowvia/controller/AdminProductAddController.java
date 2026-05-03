@@ -64,8 +64,12 @@ public class AdminProductAddController extends HttpServlet {
         
         if (success) {
             response.sendRedirect(request.getContextPath() + "/admin/products");
+            HttpSession session = request.getSession();
+            session.setAttribute("message", "Product Added Successfully");
         } else {
-            response.sendRedirect(request.getContextPath() + "/admin/products/add?error=Failed to add product");
+            response.sendRedirect(request.getContextPath() + "/admin/products/add");
+            HttpSession session = request.getSession();
+            session.setAttribute("error_message", "Product Could not be added");
         }
     }
     

@@ -117,7 +117,6 @@
                               placeholder="Describe the product benefits, usage instructions, and features..."><%= product.getDescription() != null ? product.getDescription() : "" %></textarea>
                 </div>
                 
-                <!-- Current Photo Display -->
                 <% if (product.getPhotoPath() != null && !product.getPhotoPath().isEmpty()) { %>
                 <div class="form-field full-width">
                     <label class="form-label">Current Photo</label>
@@ -131,7 +130,6 @@
                 </div>
                 <% } %>
                 
-                <!-- Photo Upload -->
                 <div class="form-field full-width">
                     <label class="form-label" for="productPhoto">Change Photo (Optional)</label>
                     <div class="file-input-wrapper">
@@ -150,11 +148,9 @@
 </div>
 
 <script>
-// Display selected file name
 document.getElementById('productPhoto')?.addEventListener('change', function(e) {
     const fileName = e.target.files[0]?.name;
     if (fileName) {
-        // Optional: Create or update a file name display
         let fileNameDisplay = document.querySelector('.file-name');
         if (!fileNameDisplay) {
             fileNameDisplay = document.createElement('div');

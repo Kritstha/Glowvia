@@ -40,11 +40,7 @@
     </div>
 
     <div class="user-meta-side">
-        <div id="sideGreeting" style="margin-bottom: 8px;">welcome</div>
-        <a href="/skincare/login"
-           class="logout-side-btn">
-            sign out
-        </a>
+        <div id="sideGreeting" style="margin-bottom: 8px;">Welcome, Admin</div>
     </div>
 
 </aside>

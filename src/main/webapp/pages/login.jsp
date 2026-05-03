@@ -8,21 +8,24 @@
 </head>
 <body>
 
-<%
-    String errorMsg = (String) request.getAttribute("error");
-%>
-
 <div class="card">
     <div class="brand">
         <h1>GlowVia</h1>
         <p>Sign in to your skincare studio</p>
     </div>
 
-    <% if (errorMsg != null && !errorMsg.trim().isEmpty()) { %>
-        <div class="error-message">
-            <%= errorMsg %>
-        </div>
-    <% } %>
+<%
+    String errorMsg = (String) session.getAttribute("error_message");
+
+    if (errorMsg != null && !errorMsg.trim().isEmpty()) {
+%>
+    <div class="error-message">
+        <%= errorMsg %>
+    </div>
+<%
+        session.removeAttribute("error_message");
+    }
+%>
 
     <form action="<%= request.getContextPath() %>/login" method="post">
         
@@ -40,7 +43,7 @@
     </form>
 
     <div class="register-link">
-        No account? <a href="register.jsp">Create account</a>
+        No account? <a href="register">Create account</a>
     </div>
 </div>
 

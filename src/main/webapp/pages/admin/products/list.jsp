@@ -41,7 +41,7 @@
                 <% if (products == null || products.isEmpty()) { %>
                     <tr>
                         <td colspan="7" class="empty-state-table">
-                            ✨ No products yet.
+                           No products yet.
                         </td>
                     </tr>
                 <% } else { 

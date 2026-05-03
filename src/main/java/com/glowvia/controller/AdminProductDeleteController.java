@@ -31,6 +31,8 @@ public class AdminProductDeleteController extends HttpServlet {
         
         if (success) {
             response.sendRedirect(request.getContextPath() + "/admin/products");
+            HttpSession session = request.getSession();
+            session.setAttribute("message", "Product Deleted Successfully");
         } else {
             response.sendRedirect(request.getContextPath() + "/admin/products/list?error=Failed to delete product");
         }

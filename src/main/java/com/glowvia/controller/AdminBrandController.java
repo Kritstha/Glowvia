@@ -30,6 +30,12 @@ public class AdminBrandController extends HttpServlet {
 
         String action = request.getParameter("action");
 
+        if (action == null) {
+            setError(request, "Invalid action");
+            response.sendRedirect("brands");
+            return;
+        }
+
         switch (action) {
             case "add":
                 addBrand(request, response);
@@ -41,7 +47,8 @@ public class AdminBrandController extends HttpServlet {
                 deleteBrand(request, response);
                 break;
             default:
-                response.sendRedirect("brands?error=Invalid action");
+                setError(request, "Invalid action");
+                response.sendRedirect("brands");
         }
     }
 
@@ -55,13 +62,13 @@ public class AdminBrandController extends HttpServlet {
         brand.setName(name);
         brand.setContact(contact);
 
-        boolean success = brandService.addBrand(brand);
-
-        if (success) {
-            response.sendRedirect("brands?message=Brand added");
+        if (brandService.addBrand(brand)) {
+            setSuccess(request, "Brand added successfully");
         } else {
-            response.sendRedirect("brands?error=Failed or duplicate brand");
+            setError(request, "Failed or duplicate brand");
         }
+
+        response.sendRedirect("brands");
     }
 
     private void updateBrand(HttpServletRequest request, HttpServletResponse response)
@@ -76,26 +83,37 @@ public class AdminBrandController extends HttpServlet {
         brand.setName(name);
         brand.setContact(contact);
 
-        boolean success = brandService.updateBrand(brand);
-
-        if (success) {
-            response.sendRedirect("brands?message=Brand updated");
+        if (brandService.updateBrand(brand)) {
+        	HttpSession session = request.getSession();
+        	setSuccess(request, "Brand updated successfully");
         } else {
-            response.sendRedirect("brands?error=Update failed");
+            setError(request, "Update failed");
         }
+
+        response.sendRedirect("brands");
     }
 
     private void deleteBrand(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int id = Integer.parseInt(request.getParameter("brandId"));
+        int id = Integer.parseInt(request.getParameter("id"));
 
-        boolean success = brandService.deleteBrand(id);
-
-        if (success) {
-            response.sendRedirect("brands?message=Brand deleted");
+        if (brandService.deleteBrand(id)) {
+            setSuccess(request, "Brand deleted successfully");
         } else {
-            response.sendRedirect("brands?error=Delete failed");
+            setError(request, "Delete failed");
         }
+
+        response.sendRedirect("brands");
+    }
+
+    private void setSuccess(HttpServletRequest request, String msg) {
+        HttpSession session = request.getSession();
+        session.setAttribute("message", msg);
+    }
+
+    private void setError(HttpServletRequest request, String msg) {
+        HttpSession session = request.getSession();
+        session.setAttribute("error_message", msg);
     }
 }

@@ -31,9 +31,10 @@ public class LoginController extends HttpServlet {
 
         if (result != null && result) {
             request.getSession().setAttribute("username", username);
+            request.getSession().setAttribute("message", "Welcome, Admin");
             response.sendRedirect(request.getContextPath() + "/admin/dashboard");
         } else {
-            request.setAttribute("error", "Invalid username or password");
+            request.getSession().setAttribute("error_message", "Invalid username or password");
             request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
         }
     }
