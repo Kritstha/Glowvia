@@ -62,7 +62,7 @@
                         <td class="product-name-cell"><%= productNameClean %></td>
                         <td><span class="brand-text"><%= brandName %></span></td>
                         <td><span class="type-badge-table"><%= category %></span></td>
-                        <td>$<%= String.format("%.2f", product.getPrice()) %></td>
+                        <td><%= String.format("%.2f", product.getPrice()) %></td>
                         <td class="<%= product.getStockQuantity() <= 5 ? "low-stock" : "" %>">
                             <%= product.getStockQuantity() %>
                             <% if (product.getStockQuantity() <= 0) { %>
@@ -73,8 +73,8 @@
                         </td>
                         <td>
 							<div class="action-buttons">
-							    <a href="/skincare/admin/products/edit?id=<%= product.getId() %>" class="edit-link">Edit</a>
-							    <a href="/skincare/admin/products/delete?id=<%= product.getId() %>" 
+							    <a href="/skincare/admin/products/edit?id=<%= product.getProductId() %>" class="edit-link">Edit</a>
+							    <a href="/skincare/admin/products/delete?id=<%= product.getProductId() %>" 
 							       class="delete-btn" 
 							       onclick="return confirm('Delete this product?');">Delete</a>
 							</div>

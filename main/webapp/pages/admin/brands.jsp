@@ -20,7 +20,7 @@
         <p>Register a skincare or beauty brand with contact details.</p>
         
         <form action="/skincare/admin/brands" method="post">
-            <input type="hidden" name="action" value="add">
+        	<input type="hidden" name="action" value="add">
             <div class="form-group">
                 <label>Brand name *</label>
                 <input type="text" name="brandName" placeholder="e.g., Drunk Elephant" autocomplete="off" required>
@@ -31,6 +31,7 @@
             </div>
             <button type="submit" class="btn-submit">+ Add brand</button>
         </form>
+        
     </div>
 
     <div class="brands-list-card">
@@ -59,24 +60,24 @@
                         <div class="contact-cell"><%= brand.getContact() != null ? brand.getContact() : "" %></div>
                         <div class="action-cell">
            
-                            <a href="#editModal-<%= brand.getId() %>" class="edit-btn">Edit</a>
+                            <a href="#editModal-<%= brand.getBrand_id() %>" class="edit-btn">Edit</a>
                             
  
                             <form action="/skincare/admin/brands" method="post" style="display:inline;" 
                                   onsubmit="return confirm('Delete <%= brand.getName() != null ? brand.getName().replace("'", "\\'") : "this brand" %>? This action cannot be undone.');">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="brandId" value="<%= brand.getId() %>">
+                                <input type="hidden" name="brandId" value="<%= brand.getBrand_id() %>">
                                 <button type="submit" class="delete-brand-btn">Delete</button>
                             </form>
                         </div>
                     </div>
                     
-                    <div id="editModal-<%= brand.getId() %>" class="modal-overlay">
+                    <div id="editModal-<%= brand.getBrand_id() %>" class="modal-overlay">
                         <div class="modal-container">
                             <h4>Edit brand</h4>
                             <form action="/skincare/admin/brands" method="post">
                                 <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="brandId" value="<%= brand.getId() %>">
+                                <input type="hidden" name="brandId" value="<%= brand.getBrand_id() %>">
                                 <div class="form-group">
                                     <label>Brand name *</label>
                                     <input type="text" name="brandName" value="<%= brand.getName() != null ? brand.getName() : "" %>" required>

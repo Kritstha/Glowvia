@@ -6,19 +6,29 @@ import com.glowvia.utils.PasswordUtil;
 
 public class LoginService {
 
-    public Boolean loginUser(User user) {
+	public User loginUser(User user) {
+	    try {
+	        UserDAO dao = new UserDAO();
+	        User dbUser = dao.getUserByUsername(user.getUserName());
+
+	        if (dbUser != null && PasswordUtil.checkPassword(user.getPassword(), dbUser.getPassword())) {
+	            return dbUser; // return FULL user object
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
+    // Add this method for ProfileController
+    public User getUserByUsername(String username) {
         try {
             UserDAO dao = new UserDAO();
-            User dbUser = dao.getUserByUsername(user.getUserName());
-
-            if (dbUser != null) {
-                return PasswordUtil.checkPassword(user.getPassword(), dbUser.getPassword());
-            }
-
+            return dao.getUserByUsername(username);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        return false;
     }
 }

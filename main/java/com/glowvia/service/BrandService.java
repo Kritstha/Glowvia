@@ -13,23 +13,22 @@ public class BrandService {
         return dao.getAllBrands();
     }
 
-    public Brand getBrandById(int id) {
-        return dao.getBrandById(id);
+    public Brand getBrandById(int brand_id) {
+        return dao.getBrandById(brand_id);
     }
 
     public boolean addBrand(Brand brand) {
 
-        // Business rule: name required
         if (brand.getName() == null || brand.getName().trim().isEmpty()) {
             return false;
         }
 
-        // Business rule: no duplicates
         if (dao.brandExists(brand.getName().trim())) {
             return false;
         }
 
         brand.setName(brand.getName().trim());
+
         return dao.addBrand(brand);
     }
 
@@ -39,15 +38,19 @@ public class BrandService {
             return false;
         }
 
-        if (dao.brandExistsExcludingId(brand.getName().trim(), brand.getId())) {
+        if (dao.brandExistsExcludingId(
+                brand.getName().trim(),
+                brand.getBrand_id())) {
+
             return false;
         }
 
         brand.setName(brand.getName().trim());
+
         return dao.updateBrand(brand);
     }
 
-    public boolean deleteBrand(int id) {
-        return dao.deleteBrand(id);
+    public boolean deleteBrand(int brand_id) {
+        return dao.deleteBrand(brand_id);
     }
 }

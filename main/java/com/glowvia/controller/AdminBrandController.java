@@ -74,18 +74,17 @@ public class AdminBrandController extends HttpServlet {
     private void updateBrand(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int id = Integer.parseInt(request.getParameter("brandId"));
+        int brand_id = Integer.parseInt(request.getParameter("brandId"));
         String name = request.getParameter("brandName");
         String contact = request.getParameter("contactInfo");
 
         Brand brand = new Brand();
-        brand.setId(id);
+        brand.setBrand_id(brand_id);
         brand.setName(name);
         brand.setContact(contact);
 
         if (brandService.updateBrand(brand)) {
-        	HttpSession session = request.getSession();
-        	setSuccess(request, "Brand updated successfully");
+            setSuccess(request, "Brand updated successfully");
         } else {
             setError(request, "Update failed");
         }
@@ -96,9 +95,9 @@ public class AdminBrandController extends HttpServlet {
     private void deleteBrand(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        int brand_id = Integer.parseInt(request.getParameter("brandId"));
 
-        if (brandService.deleteBrand(id)) {
+        if (brandService.deleteBrand(brand_id)) {
             setSuccess(request, "Brand deleted successfully");
         } else {
             setError(request, "Delete failed");

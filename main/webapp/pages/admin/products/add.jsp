@@ -31,7 +31,7 @@
                         <option value="">Select a brand</option>
                         <% if (brands != null && !brands.isEmpty()) {
                             for (Brand brand : brands) { %>
-                                <option value="<%= brand.getId() %>"><%= brand.getName() %></option>
+                                <option value="<%= brand.getBrand_id() %>"><%= brand.getName() %></option>
                         <%   }
                            } else { %>
                             <option value="" disabled>No brands available</option>
@@ -69,9 +69,8 @@
                 </div>
                 
                 <div class="form-field">
-                    <label class="form-label" for="price">Price (USD) <span>*</span></label>
+                    <label class="form-label" for="price">Price (NPR) <span>*</span></label>
                     <div class="price-input-group">
-                        <span class="price-symbol">$</span>
                         <input type="number" id="price" name="price" class="form-input" step="0.01" min="0" required 
                                placeholder="29.99">
                     </div>

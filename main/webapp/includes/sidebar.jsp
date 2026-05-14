@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".nav-item").forEach(item => {
         const navValue = item.getAttribute("data-nav");
         
-        // Check if the URL contains this nav value
         if (navValue && currentPath.includes(navValue)) {
             item.classList.add("active");
         }

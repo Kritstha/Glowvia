@@ -10,7 +10,9 @@
 
 <div class="card">
     <div class="brand">
-        <h1>GlowVia</h1>
+        <a href="<%= request.getContextPath() %>/home" style="text-decoration: none; color: inherit;">
+            <h1>GlowVia</h1>
+        </a>
         <p>Sign in to your skincare studio</p>
     </div>
 
@@ -43,7 +45,7 @@
     </form>
 
     <div class="register-link">
-        No account? <a href="register">Create account</a>
+        No account? <a href="<%= request.getContextPath() %>/register">Create account</a>
     </div>
 </div>
 

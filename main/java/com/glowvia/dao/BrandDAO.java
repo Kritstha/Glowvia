@@ -11,7 +11,7 @@ public class BrandDAO {
 
     public List<Brand> getAllBrands() {
         List<Brand> brands = new ArrayList<>();
-        String sql = "SELECT id, name, contact FROM brands ORDER BY name ASC";
+        String sql = "SELECT brand_id, name, contact FROM brands ORDER BY name ASC";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -19,7 +19,7 @@ public class BrandDAO {
 
             while (rs.next()) {
                 Brand brand = new Brand();
-                brand.setId(rs.getInt("id"));
+                brand.setBrand_id(rs.getInt("brand_id"));
                 brand.setName(rs.getString("name"));
                 brand.setContact(rs.getString("contact"));
                 brands.add(brand);
@@ -28,39 +28,46 @@ public class BrandDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return brands;
     }
 
-    public Brand getBrandById(int id) {
-        String sql = "SELECT id, name, contact FROM brands WHERE id = ?";
+    public Brand getBrandById(int brand_id) {
+
+        String sql = "SELECT brand_id, name, contact FROM brands WHERE brand_id = ?";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, brand_id);
+
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Brand brand = new Brand();
-                brand.setId(rs.getInt("id"));
+                brand.setBrand_id(rs.getInt("brand_id"));
                 brand.setName(rs.getString("name"));
                 brand.setContact(rs.getString("contact"));
+
                 return brand;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
     public boolean brandExists(String name) {
+
         String sql = "SELECT COUNT(*) FROM brands WHERE name = ?";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, name);
+
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -70,17 +77,20 @@ public class BrandDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
-    public boolean brandExistsExcludingId(String name, int excludeId) {
-        String sql = "SELECT COUNT(*) FROM brands WHERE name = ? AND id != ?";
+    public boolean brandExistsExcludingId(String name, int brand_id) {
+
+        String sql = "SELECT COUNT(*) FROM brands WHERE name = ? AND brand_id != ?";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, name);
-            stmt.setInt(2, excludeId);
+            stmt.setInt(2, brand_id);
+
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -90,11 +100,13 @@ public class BrandDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
     public boolean addBrand(Brand brand) {
-        String sql = "INSERT INTO brands (name, contact) VALUES (?, ?)";
+
+        String sql = "INSERT INTO brands(name, contact) VALUES(?, ?)";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -106,40 +118,46 @@ public class BrandDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+
+        return false;
     }
 
     public boolean updateBrand(Brand brand) {
-        String sql = "UPDATE brands SET name = ?, contact = ? WHERE id = ?";
+
+        String sql = "UPDATE brands SET name = ?, contact = ? WHERE brand_id = ?";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, brand.getName());
             stmt.setString(2, brand.getContact());
-            stmt.setInt(3, brand.getId());
+            stmt.setInt(3, brand.getBrand_id());
 
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+
+        return false;
     }
 
-    public boolean deleteBrand(int id) {
-        String sql = "DELETE FROM brands WHERE id = ?";
+    public boolean deleteBrand(int brand_id) {
+
+        String sql = "DELETE FROM brands WHERE brand_id = ?";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, brand_id);
+
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+
+        return false;
     }
 }
